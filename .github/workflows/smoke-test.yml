@@ -25,13 +25,13 @@ jobs:
           DB_PORT: ${{ vars.DB_PORT }}
           DB_NAME: ${{ vars.DB_NAME }}
         run: |
-          docker-compose up -d --build
+          docker compose up -d --build
           
           echo "Giving services 15 seconds to initialize..."
           sleep 15
           
           echo "Container Status:"
-          docker-compose ps -a
+          docker compose ps -a
           
           echo "Node App Logs:"
           docker logs tomato_app
