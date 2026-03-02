@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .tomato-card {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .tomato-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .tomato-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .price-display {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            background-color: #5cb85c;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="tomato-card">
+        <img id="tomato-image" src="" alt="Tomato">
+        <h3 id="tomato-type">Tomato Type: Loading...</h3>
+        <div id="tomato-price" class="price-display">Price: -</div>
+        <button id="get-price-button" class="button">Get Price</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const tomatoType = urlParams.get('tomato_type');
+        
+        const fetchAndDisplayPrice = async () => {
+            const priceDisplay = document.getElementById('tomato-price');
+            priceDisplay.textContent = 'Price: Loading...';
+
+            try {
+                const response = await fetch(`/tomato_price?tomato_type=${tomatoType}`);
+                const data = await response.json();
+
+                if (response.ok && data && data.price) {
+                    priceDisplay.textContent = `Price: ${data.price}`;
+                } else {
+                    priceDisplay.textContent = 'Price not found.';
+                    console.error(`Error fetching price for ${tomatoType}:`, data.error || 'No data received');
+                }
+            } catch (error) {
+                priceDisplay.textContent = 'Failed to fetch price.';
+                console.error(`Failed to fetch price for ${tomatoType}:`, error);
+            }
+        };
+
+        document.getElementById('tomato-image').src = `/tomato_image?tomato_type=${tomatoType}`;
+        document.getElementById('tomato-type').textContent = `Tomato Type: ${tomatoType.charAt(0).toUpperCase() + tomatoType.slice(1)}`;
+        document.getElementById('get-price-button').addEventListener('click', fetchAndDisplayPrice);
+        
+        // Fetch prices on page load
+        document.addEventListener('DOMContentLoaded', fetchAndDisplayPrice);
+    </script>
+</body>
+</html>
