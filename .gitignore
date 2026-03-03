@@ -1,0 +1,16 @@
+# Python virtual environment
+.venv/
+v/
+
+# PyCharm/IntelliJ
+.idea/
+
+# Python generated files
+__pycache__/
+*.pyc
+
+# Pytest cache
+.pytest_cache/
+
+.env
+node_modules/
