@@ -8,6 +8,11 @@ Rather than just testing an external public API, this repository contains its ow
 
 This repository is currently active and being developed to practise an iterative approach to software quality and automation.
 
+## API Documentation
+
+Interactive OpenAPI documentation for this project is hosted via Swagger UI. 
+The specifications and test the endpoints here: [Tomato Prices API Docs](https://<your-username>.github.io/<your-repo-name>/)
+
 ## 🏗️ Architecture & Current State
 
 The foundation of the application is currently deployed and containerized. 
@@ -23,7 +28,7 @@ The project is structured into progressive phases, moving from basic infrastruct
 
 ### Phase 1: Foundation & Pipeline Integration (In Progress)
 The goal of this phase is to establish the baseline application and a functional CI/CD feedback loop.
-* [ ] **Frontend Integration:** Implement basic HTML pages to render the tomato data and provide a UI layer for future end-to-end testing.
+* [+] **Frontend Integration:** Implement basic HTML pages to render the tomato data and provide a UI layer for future end-to-end testing.
 * [ ] **Baseline API Testing:** Introduce a Python-based testing framework (`pytest`). 
     * Create initial structural tests focusing on endpoint availability, status code validation (e.g., 200 OK, 404 Not Found), and basic JSON schema checks.
 * [ ] **CI/CD Implementation:** Configure GitHub Actions to automatically trigger the `pytest` suite upon any new commits or pull requests targeting the application code.
