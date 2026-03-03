@@ -100,7 +100,7 @@ app.get('/tomato_image', (req, res) => {
   res.sendFile(absolutePath, (err) => {
     if (err) {
         console.error(`Error sending file for type "${tomatoType}": `, err);
-        res.status(404).send('Image not found.');
+        res.status(404).json({error: 'Image not found.'});
     }
   })
 });
@@ -123,6 +123,6 @@ app.get('/tomato_price', async (req, res) => {
 });
 
 
-app.get('/tomato_page.html', (req, res) => {
+app.get('/tomato_page', (req, res) => {
     res.sendFile(path.join(__dirname, "tomato_page.html"));
 });

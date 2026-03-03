@@ -1,0 +1,11 @@
+extends:
+  - recommended
+rules:
+  # intentionally no API keys or auth for this local mock
+  security-defined: off
+  
+  # intentionally using localhost to test locally
+  no-server-example.com: off
+  
+  # simple HTML rendering routes do not need strict 400 error contracts yet
+  operation-4xx-response: off
