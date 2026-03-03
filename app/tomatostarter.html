@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Prices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .tomato-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .tomato-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .tomato-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .price-display {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            background-color: #5cb85c;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #4cae4c;
+        }
+        .button.open-page {
+            background-color: #0275d8;
+        }
+        .button.open-page:hover {
+            background-color: #025aa5;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cherry Tomato Card -->
+        <div class="tomato-card">
+            <img src="/tomato_image?tomato_type=cherry" alt="Cherry Tomato">
+            <h3>Tomato Type: Cherry</h3>
+            <div id="cherry-price" class="price-display">Price: -</div>
+            <button class="button" onclick="fetchAndDisplayPrice('cherry')">Get Price</button>
+            <a href="tomato_page.html?tomato_type=cherry">
+                <button class="button open-page">Open Cherry page</button>
+            </a>
+        </div>
+
+        <!-- Biotomato Card -->
+        <div class="tomato-card">
+            <img src="/tomato_image?tomato_type=biotomato" alt="Biotomato">
+            <h3>Tomato Type: Biotomato</h3>
+            <div id="biotomato-price" class="price-display">Price: -</div>
+            <button class="button" onclick="fetchAndDisplayPrice('biotomato')">Get Price</button>
+            <a href="tomato_page.html?tomato_type=biotomato">
+                <button class="button open-page">Open Biotomato page</button>
+            </a>
+        </div>
+
+        <!-- Regular Tomato Card -->
+        <div class="tomato-card">
+            <img src="/tomato_image?tomato_type=regulartomato" alt="Regular Tomato">
+            <h3>Tomato Type: Regulartomato</h3>
+            <div id="regulartomato-price" class="price-display">Price: -</div>
+            <button class="button" onclick="fetchAndDisplayPrice('regulartomato')">Get Price</button>
+            <a href="tomato_page.html?tomato_type=regulartomato">
+                <button class="button open-page">Open Regulartomato page</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const fetchAndDisplayPrice = async (tomatoType) => {
+            const priceDisplay = document.getElementById(`${tomatoType}-price`);
+            priceDisplay.textContent = 'Price: Loading...';
+
+            try {
+                const response = await fetch(`/tomato_price?tomato_type=${tomatoType}`);
+                const data = await response.json();
+
+                if (response.ok && data && data.price) {
+                    priceDisplay.textContent = `Price: ${data.price}`;
+                } else {
+                    priceDisplay.textContent = 'Price not found.';
+                    console.error(`Error fetching price for ${tomatoType}:`, data.error || 'No data received');
+                }
+            } catch (error) {
+                priceDisplay.textContent = 'Failed to fetch price.';
+                console.error(`Failed to fetch price for ${tomatoType}:`, error);
+            }
+        };
+
+        const updateAllPrices = () => {
+            fetchAndDisplayPrice('cherry');
+            fetchAndDisplayPrice('biotomato');
+            fetchAndDisplayPrice('regulartomato');
+        };
+
+        document.addEventListener('DOMContentLoaded', updateAllPrices);
+    </script>
+</body>
+</html>
