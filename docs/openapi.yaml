@@ -3,6 +3,8 @@ info:
   title: Tomato Prices API   # test lint workflow
   description: API documentation for the tomato pricing and image server.
   version: 1.0.0
+  license:
+    name: MIT
 servers:
   - url: http://localhost:3000
     description: Local development server
@@ -10,6 +12,7 @@ paths:
   /:
     get:
       summary: Serve the starter HTML page
+      operationId: getStarterPage
       responses:
         '200':
           $ref: "#/components/responses/HtmlResponse"
@@ -17,6 +20,7 @@ paths:
   /tomato_page:
     get:
       summary: Serve the main tomato HTML page
+      operationId: getTomatoPage
       responses:
         '200':
           $ref: "#/components/responses/HtmlResponse"
@@ -24,6 +28,7 @@ paths:
   /tomato_image:
     get:
       summary: Get a tomato image
+      operationId: getTomatoImage
       parameters:
         - $ref: "#/components/parameters/TomatoTypeOptional"
       responses:
@@ -46,6 +51,7 @@ paths:
   /tomato_price:
     get:
       summary: Get the price of a specific tomato type
+      operationId: getTomatoPrice
       parameters:
         - $ref: "#/components/parameters/TomatoTypeRequired"
       responses:
