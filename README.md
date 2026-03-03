@@ -11,7 +11,7 @@ This repository is currently active and being developed to practise an iterative
 ## API Documentation
 
 Interactive OpenAPI documentation for this project is hosted via Swagger UI. 
-The specifications and test the endpoints here: [Tomato Prices API Docs](https://<your-username>.github.io/<your-repo-name>/)
+The specifications and test the endpoints here: [Tomato Prices API Docs](https://euliap.github.io/tomato_prices/)
 
 ## 🏗️ Architecture & Current State
 
