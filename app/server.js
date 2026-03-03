@@ -100,7 +100,7 @@ app.get('/tomato_image', (req, res) => {
   res.sendFile(absolutePath, (err) => {
     if (err) {
         console.error(`Error sending file for type "${tomatoType}": `, err);
-        res.status(404).send('Image not found.');
+        res.status(404).json({error: 'Image not found.'});
     }
   })
 });
