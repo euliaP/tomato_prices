@@ -49,9 +49,19 @@
             color: #fff;
             transition: background-color 0.3s ease;
             margin-top: 15px;
+            display: block; 
+            box-sizing: border-box; 
+            text-decoration: none; 
         }
         .button:hover {
             background-color: #4cae4c;
+        }
+        .return-button {
+            background-color: #6c757d; 
+            margin-top: 10px;
+        }
+        .return-button:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
@@ -61,6 +71,7 @@
         <h3 id="tomato-type">Tomato Type: Loading...</h3>
         <div id="tomato-price" class="price-display">Price: -</div>
         <button id="get-price-button" class="button">Get Price</button>
+        <a href="/" class="button return-button">Return to Main Page</a>
     </div>
 
     <script>

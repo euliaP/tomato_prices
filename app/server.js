@@ -72,22 +72,27 @@ const startApp = async () => {
 startApp();
 
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "tomatostarter.html"));
+});
+
+
 app.get('/tomato_image', (req, res) => {
   const tomatoType = req.query.tomato_type;
   let imagePath;
 
   switch (tomatoType) {
     case 'cherry':
-      imagePath = 'images/cherry.jpg';
+      imagePath = 'tomato_images/cherry.jpg';
       break;
     case 'biotomato':
-      imagePath = 'images/biotomato.jpg';
+      imagePath = 'tomato_images/biotomato.jpg';
       break;
     case 'regulartomato':
-      imagePath = 'images/regulartomato.jpg';
+      imagePath = 'tomato_images/regulartomato.jpg';
       break;
     default:
-      imagePath = 'images/regulartomato.jpg'; 
+      imagePath = 'tomato_images/regulartomato.jpg'; 
       break;
   }
 
@@ -115,4 +120,9 @@ app.get('/tomato_price', async (req, res) => {
       console.error('Error fetching tomato price:', err);
       res.status(500).send({ error: 'Internal server error.' });
   }
+});
+
+
+app.get('/tomato_page.html', (req, res) => {
+    res.sendFile(path.join(__dirname, "tomato_page.html"));
 });
