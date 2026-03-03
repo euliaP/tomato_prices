@@ -123,6 +123,6 @@ app.get('/tomato_price', async (req, res) => {
 });
 
 
-app.get('/tomato_page.html', (req, res) => {
+app.get('/tomato_page', (req, res) => {
     res.sendFile(path.join(__dirname, "tomato_page.html"));
 });
