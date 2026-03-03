@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Tomato Prices API
+  title: Tomato Prices API   # test lint workflow
   description: API documentation for the tomato pricing and image server.
   version: 1.0.0
 servers:
