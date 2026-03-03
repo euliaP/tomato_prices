@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - baseline-api-testing-python #for testing purposes
     paths:
       - 'docs/openapi.yaml'
   pull_request:
