@@ -28,8 +28,8 @@ The project is structured into progressive phases, moving from basic infrastruct
 
 ### Phase 1: Foundation & Pipeline Integration (In Progress)
 The goal of this phase is to establish the baseline application and a functional CI/CD feedback loop.
-* [+] **Frontend Integration:** Implement basic HTML pages to render the tomato data and provide a UI layer for future end-to-end testing.
-* [ ] **Baseline API Testing:** Introduce a Python-based testing framework (`pytest`). 
+* [x] **Frontend Integration:** Implement basic HTML pages to render the tomato data and provide a UI layer for future end-to-end testing.
+* [x] **Baseline API Testing:** Introduce a Python-based testing framework (`pytest`). 
     * Create initial structural tests focusing on endpoint availability, status code validation (e.g., 200 OK, 404 Not Found), and basic JSON schema checks.
 * [ ] **CI/CD Implementation:** Configure GitHub Actions to automatically trigger the `pytest` suite upon any new commits or pull requests targeting the application code.
 
@@ -46,7 +46,7 @@ Once the pipeline is stable, the focus shifts to robust backend validation and f
 **Application:**
 * Node.js / JavaScript
 * MongoDB
-* HTML/CSS (Upcoming)
+* HTML/CSS
 
 **QA & Infrastructure:**
 * Docker & Docker Compose
