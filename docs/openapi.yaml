@@ -31,7 +31,7 @@ paths:
       summary: Get a tomato image
       operationId: getTomatoImage
       parameters:
-        - $ref: "#/components/parameters/TomatoTypeOptional"
+        - $ref: "#/components/parameters/TomatoTypeRequired"
       responses:
         '200':
           description: Successfully retrieved the image.
@@ -115,13 +115,13 @@ components:
       schema:
         $ref: "#/components/schemas/TomatoTypeEnum"
 
-    TomatoTypeOptional:
-      name: tomato_type
-      in: query
-      description: The type of tomato image to retrieve. Defaults to 'regulartomato'.
-      required: false
-      schema:
-        $ref: "#/components/schemas/TomatoTypeEnum"
+    # TomatoTypeOptional:
+    #   name: tomato_type
+    #   in: query
+    #   description: The type of tomato image to retrieve. Defaults to 'regulartomato'.
+    #   required: false
+    #   schema:
+    #     $ref: "#/components/schemas/TomatoTypeEnum"
 
   responses:
     HtmlResponse:
